@@ -2,58 +2,44 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title id="title">⚙️ Настройки</title>
+  <title>Настройки - Мой сайт</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>⚙️ Настройки</h1>
+    <h1>Настройки</h1>
     <nav>
-      <a href="index.html" id="navHome">Главная</a>
-      <a href="catalog.html" id="navCatalog">Каталог</a>
-      <a href="settings.html" id="navSettings">Настройки</a>
-      <a href="support.html" id="navSupport">Поддержка</a>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="favorites.html">Избранное</a>
+      <a href="settings.html">Настройки</a>
+      <a href="support.html">Поддержка</a>
     </nav>
+    <div class="profile-header">
+      <img id="header-avatar" src="" alt="Аватар">
+      <span id="header-nick">Гость</span>
+    </div>
   </header>
 
   <main>
+    <h2>Профиль</h2>
     <label>Ник: <input type="text" id="nickname"></label><br>
-    <label>Аватар (URL): <input type="text" id="avatar"></label><br>
+    <label>Аватар (URL): <input type="text" id="avatar-url"></label><br>
+    <label>Статус: <input type="text" id="status"></label><br>
+    <button onclick="saveProfile()">Сохранить профиль</button>
 
-    <label>Тема:
-      <select id="theme">
-        <option value="light">Светлая</option>
-        <option value="dark">Тёмная</option>
-      </select>
-    </label><br>
-
-    <label>Режим:
-      <select id="mode">
-        <option value="mobile">Телефон</option>
-        <option value="desktop">ПК</option>
-      </select>
-    </label><br>
-
-    <label>Язык:
-      <select id="language">
-        <option value="ru">Русский</option>
-        <option value="en">English</option>
-      </select>
-    </label><br>
-
-    <button onclick="saveSettings()">Сохранить</button>
+    <h2>Фон</h2>
+    <select id="background">
+      <option value="light">Светлый</option>
+      <option value="dark">Тёмный</option>
+      <option value="minecraft">Minecraft</option>
+      <option value="space">Космос</option>
+      <option value="custom">Кастом (по ссылке)</option>
+    </select>
+    <input type="text" id="custom-bg" placeholder="Ссылка на картинку">
+    <button onclick="saveBackground()">Сохранить фон</button>
   </main>
 
-  <script>
-    function saveSettings() {
-      localStorage.setItem('nickname', document.getElementById('nickname').value);
-      localStorage.setItem('avatar', document.getElementById('avatar').value);
-      localStorage.setItem('theme', document.getElementById('theme').value);
-      localStorage.setItem('mode', document.getElementById('mode').value);
-      localStorage.setItem('language', document.getElementById('language').value);
-      loadSettings(); // применяем сразу
-    }
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
