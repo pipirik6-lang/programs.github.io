@@ -1,46 +1,90 @@
+/* Общие стили */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  transition: background 0.5s, color 0.5s;
 }
 
+/* Шапка */
 header {
-  background: var(--header-bg, #f1f1f1);
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #222;
+  color: white;
+  padding: 15px;
+}
+
+header h1 {
+  margin: 0;
 }
 
 nav a {
-  margin-right: 15px;
+  color: white;
   text-decoration: none;
-  background: var(--btn-bg, #ddd);
-  padding: 5px 10px;
-  border-radius: 6px;
-  color: var(--btn-text, #000);
+  margin: 0 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
   transition: 0.3s;
 }
 
 nav a:hover {
-  background: var(--btn-hover, #bbb);
+  background: #444;
+  transform: scale(1.1);
 }
 
-.user-info {
+/* Профиль в шапке */
+.profile-header {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-.user-avatar, #previewAvatar {
+.profile-header img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #555;
-  display: none;
+  margin-right: 8px;
+  border: 2px solid white;
 }
 
+/* Контент */
 main {
   padding: 20px;
+}
+
+/* Кнопки */
+button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Список программ */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #eee;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+li:hover {
+  background: #ddd;
 }
