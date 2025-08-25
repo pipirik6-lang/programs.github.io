@@ -2,27 +2,141 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Настройки</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css">
-  <script src="theme.js" defer></script>
+  <style>
+    body {
+      transition: background 0.5s, color 0.5s;
+    }
+    .settings-container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 25px;
+      padding: 15px;
+      border-radius: 12px;
+      background: #2c2c2c22;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input, select, button {
+      margin-top: 8px;
+      padding: 8px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+    .avatar-preview {
+      margin-top: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #555;
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Настройки ⚙️</h1>
+    <h1>⚙️ Настройки</h1>
     <nav>
       <a href="index.html">Главная</a>
       <a href="catalog.html">Каталог</a>
-      <a href="settings.html" class="active">Настройки</a>
       <a href="support.html">Поддержка</a>
     </nav>
   </header>
-  <main class="content">
-    <h2>Выбор темы</h2>
-    <button id="theme-toggle" class="btn">Переключить тему</button>
+
+  <main class="settings-container">
+
+    <!-- Язык -->
+    <div class="section">
+      <label for="language">🌍 Язык сайта:</label>
+      <select id="language">
+        <option value="ru">Русский 🇷🇺</option>
+        <option value="en">English 🇬🇧</option>
+      </select>
+    </div>
+
+    <!-- Фон -->
+    <div class="section">
+      <label for="background">🎨 Фон:</label>
+      <select id="background">
+        <option value="default">Обычный</option>
+        <option value="gradient">Градиент</option>
+        <option value="image">Картинка</option>
+      </select>
+    </div>
+
+    <!-- Профиль -->
+    <div class="section">
+      <label>🖼️ Профиль:</label>
+      <input type="text" id="nickname" placeholder="Введите ник">
+      <input type="file" id="avatarInput" accept="image/*">
+      <img id="avatarPreview" class="avatar-preview">
+    </div>
+
+    <button onclick="resetSettings()">🔄 Сбросить настройки</button>
   </main>
+
   <footer>
     <p>© 2025 Мой сайт</p>
+    <p>📩 Discord: <strong>miksiczxc</strong> | Telegram: <a href="https://t.me/zxcKehyy" target="_blank">@zxcKehyy</a></p>
   </footer>
-</body>
-</html>
+
+  <script>
+    const langSelect = document.getElementById('language');
+    const bgSelect = document.getElementById('background');
+    const nicknameInput = document.getElementById('nickname');
+    const avatarInput = document.getElementById('avatarInput');
+    const avatarPreview = document.getElementById('avatarPreview');
+
+    // Загружаем сохраненные настройки
+    window.onload = () => {
+      if (localStorage.getItem('language')) langSelect.value = localStorage.getItem('language');
+      if (localStorage.getItem('background')) {
+        bgSelect.value = localStorage.getItem('background');
+        applyBackground(bgSelect.value);
+      }
+      if (localStorage.getItem('nickname')) nicknameInput.value = localStorage.getItem('nickname');
+      if (localStorage.getItem('avatar')) {
+        avatarPreview.src = localStorage.getItem('avatar');
+        avatarPreview.style.display = "block";
+      }
+    };
+
+    // Смена языка
+    langSelect.onchange = () => {
+      localStorage.setItem('language', langSelect.value);
+      alert("Язык изменён на: " + langSelect.value);
+    };
+
+    // Смена фона
+    bgSelect.onchange = () => {
+      localStorage.setItem('background', bgSelect.value);
+      applyBackground(bgSelect.value);
+    };
+
+    function applyBackground(type) {
+      if (type === 'gradient') {
+        document.body.style.background = "linear-gradient(135deg, #667eea, #764ba2)";
+      } else if (type === 'image') {
+        document.body.style.background = "url('https://picsum.photos/1200/800') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
+      } else {
+        document.body.style.background = "";
+      }
+    }
+
+    // Ник
+    nicknameInput.oninput = () => {
+      localStorage.setItem('nickname', nicknameInput.value);
+    };
+
+    // Аватар
