@@ -2,31 +2,29 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Главная - Полезные программы</title>
+  <title>Главная</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="theme.js" defer></script>
 </head>
 <body>
   <header>
-    <h1>Добро пожаловать!</h1>
+    <h1>Мой сайт</h1>
     <nav>
-      <a href="index.html" class="active">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="settings.html">Настройки</a>
-      <a href="support.html">Поддержка</a>
+      <a href="index.html" id="navHome">Главная</a>
+      <a href="catalog.html" id="navCatalog">Каталог</a>
+      <a href="settings.html" id="navSettings">Настройки</a>
+      <a href="support.html" id="navSupport">Поддержка</a>
     </nav>
+    <div class="user-info">
+      <span id="previewNick"></span>
+      <img id="previewAvatar" class="user-avatar">
+    </div>
   </header>
 
-  <main class="content home">
-    <h2>Полезные программы в одном месте</h2>
-    <p>Здесь собраны самые нужные программы: Telegram, OBS, Minecraft TLauncher и другие!</p>
-    <a class="btn big-btn" href="catalog.html">Перейти в каталог</a>
+  <main>
+    <h2>Добро пожаловать!</h2>
+    <p>Это моя первая страница 🚀</p>
   </main>
 
-  <footer>
-    <p>© 2025 Мой сайт</p>
-    <p>📩 Discord: <strong>miksiczxc</strong> | Telegram: <a href="https://t.me/zxcKehyy" target="_blank">@zxcKehyy</a></p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
