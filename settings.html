@@ -7,136 +7,179 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      transition: background 0.5s, color 0.5s;
-    }
-    .settings-container {
-      max-width: 700px;
-      margin: auto;
+      font-family: Arial, sans-serif;
+      margin: 0;
       padding: 20px;
     }
-    .section {
-      margin-bottom: 25px;
-      padding: 15px;
-      border-radius: 12px;
-      background: #2c2c2c22;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: var(--header-bg);
+      color: var(--header-text);
+    }
+    nav a {
+      margin: 0 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      transition: 0.2s;
+    }
+    nav a:hover {
+      background: var(--btn-hover);
     }
     label {
       display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
+      margin: 10px 0 5px;
     }
-    input, select, button {
-      margin-top: 8px;
-      padding: 8px;
-      border-radius: 8px;
-      border: none;
-      outline: none;
+    input, select {
+      padding: 6px;
+      margin-bottom: 15px;
+      width: 250px;
     }
-    .avatar-preview {
-      margin-top: 10px;
-      width: 100px;
-      height: 100px;
+    .preview {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-avatar {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #555;
-      display: none;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>⚙️ Настройки</h1>
+    <h1 id="title">⚙️ Настройки</h1>
     <nav>
-      <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="support.html">Поддержка</a>
+      <a href="index.html" id="navHome">Главная</a>
+      <a href="catalog.html" id="navCatalog">Каталог</a>
+      <a href="settings.html" id="navSettings">Настройки</a>
+      <a href="support.html" id="navSupport">Поддержка</a>
     </nav>
   </header>
 
-  <main class="settings-container">
+  <main>
+    <label for="nickname">Никнейм:</label>
+    <input type="text" id="nickname" placeholder="Введите ник">
 
-    <!-- Язык -->
-    <div class="section">
-      <label for="language">🌍 Язык сайта:</label>
-      <select id="language">
-        <option value="ru">Русский 🇷🇺</option>
-        <option value="en">English 🇬🇧</option>
-      </select>
+    <label for="avatar">Ссылка на аватар:</label>
+    <input type="text" id="avatar" placeholder="Вставьте ссылку на фото">
+
+    <label for="theme">Тема:</label>
+    <select id="theme">
+      <option value="light">🌞 Светлая</option>
+      <option value="dark">🌙 Тёмная</option>
+    </select>
+
+    <label for="mode">Режим:</label>
+    <select id="mode">
+      <option value="mobile">📱 Телефон</option>
+      <option value="desktop">💻 ПК</option>
+    </select>
+
+    <label for="language">Язык:</label>
+    <select id="language">
+      <option value="ru">Русский</option>
+      <option value="en">English</option>
+    </select>
+
+    <button onclick="saveSettings()">Сохранить</button>
+
+    <div class="preview">
+      <span id="previewNick"></span>
+      <img id="previewAvatar" class="user-avatar">
     </div>
-
-    <!-- Фон -->
-    <div class="section">
-      <label for="background">🎨 Фон:</label>
-      <select id="background">
-        <option value="default">Обычный</option>
-        <option value="gradient">Градиент</option>
-        <option value="image">Картинка</option>
-      </select>
-    </div>
-
-    <!-- Профиль -->
-    <div class="section">
-      <label>🖼️ Профиль:</label>
-      <input type="text" id="nickname" placeholder="Введите ник">
-      <input type="file" id="avatarInput" accept="image/*">
-      <img id="avatarPreview" class="avatar-preview">
-    </div>
-
-    <button onclick="resetSettings()">🔄 Сбросить настройки</button>
   </main>
 
-  <footer>
-    <p>© 2025 Мой сайт</p>
-    <p>📩 Discord: <strong>miksiczxc</strong> | Telegram: <a href="https://t.me/zxcKehyy" target="_blank">@zxcKehyy</a></p>
-  </footer>
-
   <script>
-    const langSelect = document.getElementById('language');
-    const bgSelect = document.getElementById('background');
-    const nicknameInput = document.getElementById('nickname');
-    const avatarInput = document.getElementById('avatarInput');
-    const avatarPreview = document.getElementById('avatarPreview');
+    function saveSettings() {
+      localStorage.setItem('nickname', document.getElementById('nickname').value);
+      localStorage.setItem('avatar', document.getElementById('avatar').value);
+      localStorage.setItem('theme', document.getElementById('theme').value);
+      localStorage.setItem('mode', document.getElementById('mode').value);
+      localStorage.setItem('language', document.getElementById('language').value);
+      loadSettings();
+    }
 
-    // Загружаем сохраненные настройки
-    window.onload = () => {
-      if (localStorage.getItem('language')) langSelect.value = localStorage.getItem('language');
-      if (localStorage.getItem('background')) {
-        bgSelect.value = localStorage.getItem('background');
-        applyBackground(bgSelect.value);
-      }
-      if (localStorage.getItem('nickname')) nicknameInput.value = localStorage.getItem('nickname');
+    function loadSettings() {
+      document.getElementById('nickname').value = localStorage.getItem('nickname') || "";
+      document.getElementById('avatar').value = localStorage.getItem('avatar') || "";
+      document.getElementById('theme').value = localStorage.getItem('theme') || "light";
+      document.getElementById('mode').value = localStorage.getItem('mode') || "mobile";
+      document.getElementById('language').value = localStorage.getItem('language') || "ru";
+
+      // превью ника и авы
+      document.getElementById('previewNick').textContent = localStorage.getItem('nickname') || "Без ника";
       if (localStorage.getItem('avatar')) {
-        avatarPreview.src = localStorage.getItem('avatar');
-        avatarPreview.style.display = "block";
-      }
-    };
-
-    // Смена языка
-    langSelect.onchange = () => {
-      localStorage.setItem('language', langSelect.value);
-      alert("Язык изменён на: " + langSelect.value);
-    };
-
-    // Смена фона
-    bgSelect.onchange = () => {
-      localStorage.setItem('background', bgSelect.value);
-      applyBackground(bgSelect.value);
-    };
-
-    function applyBackground(type) {
-      if (type === 'gradient') {
-        document.body.style.background = "linear-gradient(135deg, #667eea, #764ba2)";
-      } else if (type === 'image') {
-        document.body.style.background = "url('https://picsum.photos/1200/800') no-repeat center center fixed";
-        document.body.style.backgroundSize = "cover";
+        document.getElementById('previewAvatar').src = localStorage.getItem('avatar');
+        document.getElementById('previewAvatar').style.display = "block";
       } else {
-        document.body.style.background = "";
+        document.getElementById('previewAvatar').style.display = "none";
+      }
+
+      applyTheme();
+      applyMode();
+      applyLanguage();
+    }
+
+    function applyTheme() {
+      const theme = localStorage.getItem('theme');
+      if (theme === "dark") {
+        document.body.style.background = "#222";
+        document.body.style.color = "#eee";
+        document.documentElement.style.setProperty('--header-bg', '#333');
+        document.documentElement.style.setProperty('--header-text', '#fff');
+        document.documentElement.style.setProperty('--btn-bg', '#444');
+        document.documentElement.style.setProperty('--btn-hover', '#666');
+        document.documentElement.style.setProperty('--btn-text', '#fff');
+      } else {
+        document.body.style.background = "#fff";
+        document.body.style.color = "#111";
+        document.documentElement.style.setProperty('--header-bg', '#f1f1f1');
+        document.documentElement.style.setProperty('--header-text', '#000');
+        document.documentElement.style.setProperty('--btn-bg', '#ddd');
+        document.documentElement.style.setProperty('--btn-hover', '#bbb');
+        document.documentElement.style.setProperty('--btn-text', '#000');
       }
     }
 
-    // Ник
-    nicknameInput.oninput = () => {
-      localStorage.setItem('nickname', nicknameInput.value);
-    };
+    function applyMode() {
+      const mode = localStorage.getItem('mode');
+      if (mode === "desktop") {
+        document.body.style.maxWidth = "1200px";
+        document.body.style.margin = "0 auto";
+      } else {
+        document.body.style.maxWidth = "500px";
+        document.body.style.margin = "0 auto";
+      }
+    }
 
-    // Аватар
+    function applyLanguage() {
+      const lang = localStorage.getItem('language');
+      if (lang === "en") {
+        document.getElementById('title').textContent = "⚙️ Settings";
+        document.getElementById('navHome').textContent = "Home";
+        document.getElementById('navCatalog').textContent = "Catalog";
+        document.getElementById('navSettings').textContent = "Settings";
+        document.getElementById('navSupport').textContent = "Support";
+      } else {
+        document.getElementById('title').textContent = "⚙️ Настройки";
+        document.getElementById('navHome').textContent = "Главная";
+        document.getElementById('navCatalog').textContent = "Каталог";
+        document.getElementById('navSettings').textContent = "Настройки";
+        document.getElementById('navSupport').textContent = "Поддержка";
+      }
+    }
+
+    window.onload = loadSettings;
+  </script>
+</body>
+</html>
