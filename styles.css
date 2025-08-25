@@ -1,0 +1,83 @@
+/* Общие стили */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Темы */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --primary: #4CAF50;
+  --card-bg: #f0f0f0;
+}
+
+.dark-theme {
+  --bg: #121212;
+  --text: #ffffff;
+  --primary: #00c853;
+  --card-bg: #1e1e1e;
+}
+
+/* Хедер */
+header {
+  background: var(--primary);
+  padding: 10px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  color: white;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Контент */
+.content {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Карточки программ */
+.program-card {
+  background: var(--card-bg);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.program-card:hover {
+  transform: scale(1.03);
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: var(--primary);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #2e7d32;
+}
