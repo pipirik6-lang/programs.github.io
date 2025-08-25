@@ -1,83 +1,46 @@
-/* Общие стили */
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.3s, color 0.3s;
-}
-
-/* Темы */
-:root {
-  --bg: #ffffff;
-  --text: #000000;
-  --primary: #4CAF50;
-  --card-bg: #f0f0f0;
-}
-
-.dark-theme {
-  --bg: #121212;
-  --text: #ffffff;
-  --primary: #00c853;
-  --card-bg: #1e1e1e;
-}
-
-/* Хедер */
-header {
-  background: var(--primary);
-  padding: 10px;
-  text-align: center;
-}
-
-header h1 {
   margin: 0;
-  color: white;
+  padding: 0;
+}
+
+header {
+  background: var(--header-bg, #f1f1f1);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 nav a {
-  color: white;
-  margin: 0 10px;
+  margin-right: 15px;
   text-decoration: none;
-  font-weight: bold;
+  background: var(--btn-bg, #ddd);
+  padding: 5px 10px;
+  border-radius: 6px;
+  color: var(--btn-text, #000);
   transition: 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  background: var(--btn-hover, #bbb);
 }
 
-/* Контент */
-.content {
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar, #previewAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #555;
+  display: none;
+}
+
+main {
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-/* Карточки программ */
-.program-card {
-  background: var(--card-bg);
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-.program-card:hover {
-  transform: scale(1.03);
-}
-
-/* Кнопки */
-.btn {
-  display: inline-block;
-  padding: 10px 15px;
-  background: var(--primary);
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #2e7d32;
 }
