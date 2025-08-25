@@ -2,62 +2,12 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Настройки</title>
+  <title id="title">⚙️ Настройки</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background: var(--header-bg);
-      color: var(--header-text);
-    }
-    nav a {
-      margin: 0 10px;
-      padding: 8px 12px;
-      border-radius: 8px;
-      text-decoration: none;
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      transition: 0.2s;
-    }
-    nav a:hover {
-      background: var(--btn-hover);
-    }
-    label {
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, select {
-      padding: 6px;
-      margin-bottom: 15px;
-      width: 250px;
-    }
-    .preview {
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .user-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #555;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1 id="title">⚙️ Настройки</h1>
+    <h1>⚙️ Настройки</h1>
     <nav>
       <a href="index.html" id="navHome">Главная</a>
       <a href="catalog.html" id="navCatalog">Каталог</a>
@@ -67,36 +17,31 @@
   </header>
 
   <main>
-    <label for="nickname">Никнейм:</label>
-    <input type="text" id="nickname" placeholder="Введите ник">
+    <label>Ник: <input type="text" id="nickname"></label><br>
+    <label>Аватар (URL): <input type="text" id="avatar"></label><br>
 
-    <label for="avatar">Ссылка на аватар:</label>
-    <input type="text" id="avatar" placeholder="Вставьте ссылку на фото">
+    <label>Тема:
+      <select id="theme">
+        <option value="light">Светлая</option>
+        <option value="dark">Тёмная</option>
+      </select>
+    </label><br>
 
-    <label for="theme">Тема:</label>
-    <select id="theme">
-      <option value="light">🌞 Светлая</option>
-      <option value="dark">🌙 Тёмная</option>
-    </select>
+    <label>Режим:
+      <select id="mode">
+        <option value="mobile">Телефон</option>
+        <option value="desktop">ПК</option>
+      </select>
+    </label><br>
 
-    <label for="mode">Режим:</label>
-    <select id="mode">
-      <option value="mobile">📱 Телефон</option>
-      <option value="desktop">💻 ПК</option>
-    </select>
-
-    <label for="language">Язык:</label>
-    <select id="language">
-      <option value="ru">Русский</option>
-      <option value="en">English</option>
-    </select>
+    <label>Язык:
+      <select id="language">
+        <option value="ru">Русский</option>
+        <option value="en">English</option>
+      </select>
+    </label><br>
 
     <button onclick="saveSettings()">Сохранить</button>
-
-    <div class="preview">
-      <span id="previewNick"></span>
-      <img id="previewAvatar" class="user-avatar">
-    </div>
   </main>
 
   <script>
@@ -106,80 +51,9 @@
       localStorage.setItem('theme', document.getElementById('theme').value);
       localStorage.setItem('mode', document.getElementById('mode').value);
       localStorage.setItem('language', document.getElementById('language').value);
-      loadSettings();
+      loadSettings(); // применяем сразу
     }
-
-    function loadSettings() {
-      document.getElementById('nickname').value = localStorage.getItem('nickname') || "";
-      document.getElementById('avatar').value = localStorage.getItem('avatar') || "";
-      document.getElementById('theme').value = localStorage.getItem('theme') || "light";
-      document.getElementById('mode').value = localStorage.getItem('mode') || "mobile";
-      document.getElementById('language').value = localStorage.getItem('language') || "ru";
-
-      // превью ника и авы
-      document.getElementById('previewNick').textContent = localStorage.getItem('nickname') || "Без ника";
-      if (localStorage.getItem('avatar')) {
-        document.getElementById('previewAvatar').src = localStorage.getItem('avatar');
-        document.getElementById('previewAvatar').style.display = "block";
-      } else {
-        document.getElementById('previewAvatar').style.display = "none";
-      }
-
-      applyTheme();
-      applyMode();
-      applyLanguage();
-    }
-
-    function applyTheme() {
-      const theme = localStorage.getItem('theme');
-      if (theme === "dark") {
-        document.body.style.background = "#222";
-        document.body.style.color = "#eee";
-        document.documentElement.style.setProperty('--header-bg', '#333');
-        document.documentElement.style.setProperty('--header-text', '#fff');
-        document.documentElement.style.setProperty('--btn-bg', '#444');
-        document.documentElement.style.setProperty('--btn-hover', '#666');
-        document.documentElement.style.setProperty('--btn-text', '#fff');
-      } else {
-        document.body.style.background = "#fff";
-        document.body.style.color = "#111";
-        document.documentElement.style.setProperty('--header-bg', '#f1f1f1');
-        document.documentElement.style.setProperty('--header-text', '#000');
-        document.documentElement.style.setProperty('--btn-bg', '#ddd');
-        document.documentElement.style.setProperty('--btn-hover', '#bbb');
-        document.documentElement.style.setProperty('--btn-text', '#000');
-      }
-    }
-
-    function applyMode() {
-      const mode = localStorage.getItem('mode');
-      if (mode === "desktop") {
-        document.body.style.maxWidth = "1200px";
-        document.body.style.margin = "0 auto";
-      } else {
-        document.body.style.maxWidth = "500px";
-        document.body.style.margin = "0 auto";
-      }
-    }
-
-    function applyLanguage() {
-      const lang = localStorage.getItem('language');
-      if (lang === "en") {
-        document.getElementById('title').textContent = "⚙️ Settings";
-        document.getElementById('navHome').textContent = "Home";
-        document.getElementById('navCatalog').textContent = "Catalog";
-        document.getElementById('navSettings').textContent = "Settings";
-        document.getElementById('navSupport').textContent = "Support";
-      } else {
-        document.getElementById('title').textContent = "⚙️ Настройки";
-        document.getElementById('navHome').textContent = "Главная";
-        document.getElementById('navCatalog').textContent = "Каталог";
-        document.getElementById('navSettings').textContent = "Настройки";
-        document.getElementById('navSupport').textContent = "Поддержка";
-      }
-    }
-
-    window.onload = loadSettings;
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
