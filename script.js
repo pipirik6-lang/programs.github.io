@@ -34,11 +34,8 @@ function applyLanguage() {
   const lang = localStorage.getItem('language') || "ru";
 
   if (document.getElementById('title')) {
-    if (lang === "en") {
-      document.getElementById('title').textContent = "⚙️ Settings";
-    } else {
-      document.getElementById('title').textContent = "⚙️ Настройки";
-    }
+    document.getElementById('title').textContent =
+      (lang === "en") ? "⚙️ Settings" : "⚙️ Настройки";
   }
 
   if (document.getElementById('navHome')) {
