@@ -2,96 +2,38 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог программ</title>
+  <title>Каталог</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .user-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #555;
-      display: none;
-    }
-    .program {
-      border: 1px solid #555;
-      padding: 15px;
-      margin: 10px;
-      border-radius: 12px;
-      background: #2c2c2c22;
-    }
-    .program h3 {
-      margin: 0;
-    }
-    .program button {
-      margin-top: 10px;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 8px;
-      background: #444;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .program button:hover {
-      background: #666;
-    }
-  </style>
 </head>
 <body>
   <header>
-    <h1>Каталог</h1>
+    <h1>Каталог программ</h1>
     <nav>
-      <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="settings.html">⚙️ Настройки</a>
-      <a href="support.html">Поддержка</a>
+      <a href="index.html" id="navHome">Главная</a>
+      <a href="catalog.html" id="navCatalog">Каталог</a>
+      <a href="settings.html" id="navSettings">Настройки</a>
+      <a href="support.html" id="navSupport">Поддержка</a>
     </nav>
     <div class="user-info">
-      <span id="headerNick"></span>
-      <img id="headerAvatar" class="user-avatar">
+      <span id="previewNick"></span>
+      <img id="previewAvatar" class="user-avatar">
     </div>
   </header>
 
   <main>
-    <div class="program">
-      <h3>OBS Studio</h3>
-      <p>OBS — это программа для записи и стриминга.</p>
-      <button onclick="location.href='https://obsproject.com/download'">Скачать</button>
-    </div>
+    <section class="program">
+      <h2>OBS Studio</h2>
+      <p>Программа для записи и стриминга видео.</p>
+      <a href="obs.html">Подробнее</a>
+    </section>
 
-    <div class="program">
-      <h3>TLauncher</h3>
-      <p>TLauncher — лаунчер для Minecraft.</p>
-      <button onclick="location.href='https://tlauncher.org/ru/'">Скачать</button>
-    </div>
-
-    <div class="program">
-      <h3>Telegram</h3>
-      <p>Telegram — быстрый и безопасный мессенджер.</p>
-      <button onclick="location.href='https://telegram.org/dl'">Скачать</button>
-    </div>
+    <section class="program">
+      <h2>TLauncher</h2>
+      <p>Популярный лаунчер для Minecraft.</p>
+      <a href="tlauncher.html">Подробнее</a>
+    </section>
   </main>
 
-  <script>
-    const headerNick = document.getElementById('headerNick');
-    const headerAvatar = document.getElementById('headerAvatar');
-
-    window.onload = () => {
-      if (localStorage.getItem('nickname')) {
-        headerNick.textContent = localStorage.getItem('nickname');
-      }
-      if (localStorage.getItem('avatar')) {
-        headerAvatar.src = localStorage.getItem('avatar');
-        headerAvatar.style.display = "block";
-      }
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
