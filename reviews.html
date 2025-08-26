@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Отзывы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Отзывы</h1>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="profile.html">Профиль</a>
+      <a href="settings.html">Настройки</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Оставьте отзыв</h2>
+    <textarea id="reviewText" placeholder="Ваш отзыв..."></textarea><br>
+    <button onclick="addReview()">Отправить</button>
+
+    <h2>Все отзывы:</h2>
+    <div id="reviewsList"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
