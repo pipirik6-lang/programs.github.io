@@ -10,77 +10,36 @@
     <h1>Каталог программ</h1>
     <nav>
       <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="favorites.html">Избранное</a>
+      <a href="profile.html">Профиль</a>
       <a href="settings.html">Настройки</a>
       <a href="reviews.html">Отзывы</a>
-      <a href="support.html">Поддержка</a>
     </nav>
-    <div class="profile-header">
-      <img id="header-avatar" src="" alt="Аватар">
-      <span id="header-nick">Гость</span>
-    </div>
   </header>
 
-  <main>
-    <h2>Выбери программу</h2>
-    <ul>
-      <li>
-        <h3>OBS Studio</h3>
-        <p>Программа для записи экрана и стриминга.</p>
-        <button onclick="window.location.href='obs.html'">Подробнее</button>
-        <a href="https://obsproject.com/download" target="_blank"><button>Скачать</button></a>
-      </li>
+  <main class="grid">
+    <div class="card">
+      <h3>OBS Studio</h3>
+      <p>Запись и стриминг видео</p>
+      <a href="obs.html"><button>Подробнее</button></a>
+    </div>
 
-      <li>
-        <h3>Telegram</h3>
-        <p>Мессенджер для общения и сообществ.</p>
-        <button onclick="window.location.href='telegram.html'">Подробнее</button>
-        <a href="https://desktop.telegram.org/" target="_blank"><button>Скачать</button></a>
-      </li>
+    <div class="card">
+      <h3>Telegram</h3>
+      <p>Мессенджер для общения</p>
+      <a href="telegram.html"><button>Подробнее</button></a>
+    </div>
 
-      <li>
-        <h3>TLauncher</h3>
-        <p>Лаунчер для Minecraft с модами.</p>
-        <button onclick="window.location.href='tlauncher.html'">Подробнее</button>
-        <a href="https://tlauncher.org/" target="_blank"><button>Скачать</button></a>
-      </li>
+    <div class="card">
+      <h3>TLauncher</h3>
+      <p>Лаунчер для Minecraft</p>
+      <a href="tlauncher.html"><button>Подробнее</button></a>
+    </div>
 
-      <li>
-        <h3>Minecraft</h3>
-        <p>Популярная песочница для выживания и творчества.</p>
-        <button onclick="window.location.href='minecraft.html'">Подробнее</button>
-        <a href="https://www.minecraft.net/ru-ru/download" target="_blank"><button>Скачать</button></a>
-      </li>
-
-      <li>
-        <h3>Discord</h3>
-        <p>Приложение для общения в голосе и текстом.</p>
-        <button onclick="window.location.href='discord.html'">Подробнее</button>
-        <a href="https://discord.com/download" target="_blank"><button>Скачать</button></a>
-      </li>
-
-      <li>
-        <h3>Bandicam</h3>
-        <p>Программа для записи игр и экрана.</p>
-        <button onclick="window.location.href='bandicam.html'">Подробнее</button>
-        <a href="https://www.bandicam.com/downloads/" target="_blank"><button>Скачать</button></a>
-      </li>
-
-      <li>
-        <h3>Google Chrome</h3>
-        <p>Быстрый и удобный браузер от Google.</p>
-        <button onclick="window.location.href='chrome.html'">Подробнее</button>
-        <a href="https://www.google.com/chrome/" target="_blank"><button>Скачать</button></a>
-      </li>
-
-      <li>
-        <h3>Steam</h3>
-        <p>Популярный магазин игр и сообщество геймеров.</p>
-        <button onclick="window.location.href='steam.html'">Подробнее</button>
-        <a href="https://store.steampowered.com/about/" target="_blank"><button>Скачать</button></a>
-      </li>
-    </ul>
+    <div class="card">
+      <h3>Discord</h3>
+      <p>Голос и чаты</p>
+      <a href="discord.html"><button>Подробнее</button></a>
+    </div>
   </main>
 
   <script src="script.js"></script>
